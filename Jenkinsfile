@@ -9,6 +9,7 @@ pipeline {
         stage('Example install') {
             steps {
                 sh "mvn install"
+                echo "Build successfully finished"
             }
         }
       }  
