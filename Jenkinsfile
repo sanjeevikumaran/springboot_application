@@ -15,7 +15,7 @@ pipeline {
         stage('Example deploy') {
             steps {
                 cd /var/lib/jenkins/workspace/pipeline/target
-                cp -v file-demo-0.0.1-SNAPSHOT.jar /home/ubuntu/Documents/
+                sudo cp -v file-demo-0.0.1-SNAPSHOT.jar /home/ubuntu/Documents/
                   }
                 }
               }
