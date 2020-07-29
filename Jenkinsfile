@@ -16,9 +16,8 @@ pipeline {
             steps {
                 cd /var/lib/jenkins/workspace/springboot-build/target
                 cp -v file-demo-0.0.1-SNAPSHOT.jar /home/ubuntu/Documents/
-               
                   }
-          }
-       }  
-    }   
-      
+                }
+              }
+           }
+
