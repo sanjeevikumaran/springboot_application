@@ -18,8 +18,8 @@ pipeline {
         }
         stage('Example deploy') {
             steps {
-                sh "cd /var/lib/jenkins/workspace/pipeline/target"
-                sh "sudo cp -v file-demo-0.0.1-SNAPSHOT.jar /home/ubuntu/Documents/"
+                
+                sh "sudo rsync -zvh /var/lib/jenkins/workspace/pipeline/targetfile-demo-0.0.1-SNAPSHOT.jar /home/ubuntu/Documents/"
                   }
                 }
               }
