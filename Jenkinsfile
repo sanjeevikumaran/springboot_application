@@ -1,11 +1,15 @@
 pipeline {
+    
     agent any
-    stages {
-        stage('Example clean') {
+    stages 
+          {
+        
+            stage('Example clean') {
             steps {
                sh "mvn clean"
-            }
-        }
+                  }
+                                   
+                                   }  
         stage('Example install') {
             steps {
                 sh "mvn install"
@@ -14,9 +18,10 @@ pipeline {
         }
         stage('Example deploy') {
             steps {
-                cd /var/lib/jenkins/workspace/pipeline/target
-                sudo cp -v file-demo-0.0.1-SNAPSHOT.jar /home/ubuntu/Documents/
+                sh "cd /var/lib/jenkins/workspace/pipeline/target"
+                sh "sudo cp -v file-demo-0.0.1-SNAPSHOT.jar /home/ubuntu/Documents/"
                   }
                 }
               }
            }
+
