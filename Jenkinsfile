@@ -26,11 +26,11 @@ pipeline {
                 sh "ssh -p 32 -i /home/ubuntu/Desktop/Deployserver.pem -tt ubuntu@13.251.140.214 'java -jar /home/ubuntu/Documents/file-demo-0.0.1-SNAPSHOT.jar'"
                   }
                 }
-        post {
+             }
+         post {
             always {
-            emailext body: 'A Test EMail', recipientProviders: [[$class: 'sanjeevik470@gmail.com'], [$class: 'rhel8875@gmail.com']], subject: 'Test'
+                    emailext body: 'A Test EMail', recipientProviders: [[$class: 'sanjeevik470@gmail.com'], [$class: 'rhel8875@gmail.com']], subject: 'Test'
                   }
                 }
-              }
            }
 
