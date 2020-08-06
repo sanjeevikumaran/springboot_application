@@ -27,10 +27,10 @@ pipeline {
                   }
                 }
              }
-         post {
-            always {
-                    emailext body: 'A Test EMail', recipientProviders: [[$class: 'sanjeevik470@gmail.com'], [$class: 'rhel8875@gmail.com']], subject: 'Test'
-                  }
-                }
+    stage("Email notification"){     
+                mail bcc: '', body: '''Pipeline successfully executed
+                ''', cc: 'sanjeevikumaran514@gmail.com', from: '', replyTo: '', subject: 'Test email ', to: 'sanjeevikumaran514@gmail.com'
+         
+             } 
            }
 
