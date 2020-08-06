@@ -28,9 +28,10 @@ pipeline {
                 }
              }
         stage('Email notification') {     
+            steps {
                 mail bcc: '', body: '''Pipeline successfully executed
                 ''', cc: 'sanjeevikumaran514@gmail.com', from: '', replyTo: '', subject: 'Test email ', to: 'sanjeevikumaran514@gmail.com'
-         
+                  }
              } 
            }
 
