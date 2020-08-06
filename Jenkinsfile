@@ -26,7 +26,6 @@ pipeline {
                 sh "ssh -p 32 -i /home/ubuntu/Desktop/Deployserver.pem -tt ubuntu@13.251.140.214 'java -jar /home/ubuntu/Documents/file-demo-0.0.1-SNAPSHOT.jar'"
                   }
                 }
-             }
         stage('Email notification') {     
             steps {
                 mail bcc: '', body: '''Pipeline successfully executed
