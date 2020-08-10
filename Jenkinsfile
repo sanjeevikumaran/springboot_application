@@ -26,11 +26,15 @@ pipeline {
                // ''', cc: 'sanjeevikumaran514@gmail.com', from: '', replyTo: '', subject: 'Test email ', to: 'sanjeevikumaran514@gmail.com'
                //   }
               // } 
-          
-            stage('Test Stage') 
+            options 
+               {
+                   timestamps()
+               }
+            
+            stage('Push finder') 
                {
             steps {
-                checkout changelog: true, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/Sample_branch']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'TestCredentials', url: '']]]
+                checkout changelog: true, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: []]
                 script {
                      Author_ID=sh(script: "git show -s --pretty=%an", returnStdout: true).trim()
                      Author_Name=sh(script: "git show -s --pretty=%ae", returnStdout: true).trim()
