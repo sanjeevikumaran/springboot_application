@@ -47,8 +47,9 @@ pipeline {
             post {
               always {
                  mail to: 'sanjeevikumaran52@gmail.com',
-                 subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
-                 body: " ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}";
+                 subject: "Pipeline: ${currentBuild.fullDisplayName}",
+                 body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
+                 subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}";
     }
 }
                
