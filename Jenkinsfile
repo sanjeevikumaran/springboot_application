@@ -46,9 +46,9 @@ pipeline {
                
             post {
               always {
-                 mail to: 'surath@wisdomtoolz.com',
+                 mail to: 'sanjeevikumaran52@gmail.com',
                  subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
-                 body: "<b>${pivote}</b><br>\n\nMensaje de error: ${error}\n\n<br>Projecto: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}";
+                 body: " ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}";
     }
 }
                
