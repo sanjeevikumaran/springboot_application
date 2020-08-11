@@ -44,21 +44,13 @@ pipeline {
               // }
             }    
                
-          post {
-           always {
-             echo  "I will always say Hello again!"
-             
-         mail bcc: '',
-         cc: 'sanjeevikumaran52@gmail.com',
-         charset: 'UTF-8',
-         from: 'sanjeevikumaran514@gmail.com',
-         mimeType: 'text/html',
-         replyTo: '',
-         subject: "ERROR CI: Project name comes here -> ${env.JOB_NAME}",
-         to: "sanjeevikumaran@wisdomtoolz.com",
-         body: "<b>${pivote}</b><br>\n\nMensaje de error: ${error}\n\n<br>Projecto: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}";
-        
-              }
+            post {
+              always {
+                 mail to: 'surath@wisdomtoolz.com',
+                 subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+                 body: "Something is wrong with ${env.BUILD_URL}"
+    }
+}
                
                
                
