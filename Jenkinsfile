@@ -36,10 +36,10 @@ pipeline {
             steps {
                 checkout changelog: true, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: []]
                 script {
-                     Author_ID=sh(script: "git show -s --pretty=%an", returnStdout: true).trim()
+                     //Author_ID=sh(script: "git show -s --pretty=%an", returnStdout: true).trim()
                      Author_Name=sh(script: "git show -s --pretty=%ae", returnStdout: true).trim()
                        }
-                echo "${Author_ID} and ${Author_Name}"
+                echo "${Author_Name}"              // echo "${Author_ID} and ${Author_Name}"
                   }
                }
             }    
