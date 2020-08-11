@@ -12,10 +12,10 @@ pipeline {
 
                       /* ... existing build steps ... */
 
-
+                  
                       sh "mvn clean"
                       sh "mvn install"
-                      
+
 
                         } catch (e) 
                             {
