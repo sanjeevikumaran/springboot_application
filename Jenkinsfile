@@ -65,8 +65,7 @@ pipeline {
                 echo "ok"
                   } 
               }  
-          post 
-            {
+          post {
            always {
              echo 'I will always say Hello again!'
             
@@ -74,7 +73,7 @@ pipeline {
        recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
        subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
                  }
-            }
+              }
                
                
                
