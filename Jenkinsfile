@@ -55,7 +55,7 @@ pipeline {
          mimeType: 'text/html',
          replyTo: '',
          subject: "ERROR CI: Project name comes here -> ${env.JOB_NAME}",
-         to: "${sanjeevikumaran514@gmail.com}",
+         to: "${veera@wisdomtoolz.com}",
          body: "<b>${pivote}</b><br>\n\nMensaje de error: ${error}\n\n<br>Projecto: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}";
         
               }
