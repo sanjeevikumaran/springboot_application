@@ -48,11 +48,16 @@ pipeline {
            always {
              echo  "I will always say Hello again!"
              
-               
-       body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
-       step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'sanjeevikumaran52@gmail.com', sendToIndividuals: true]),
-       subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
-                 }
+         mail bcc: '',
+         cc: 'sanjeevikumaran52@gmail.com',
+         charset: 'UTF-8',
+         from: 'sanjeevikumaran514@gmail.com',
+         mimeType: 'text/html',
+         replyTo: '',
+         subject: "ERROR CI: Project name comes here -> ${env.JOB_NAME}",
+         to: "${sanjeevikumaran514@gmail.com,veera@wisdomtoolz.com,surath@wisdomtoolz.com}",
+         body: "<b>${pivote}</b><br>\n\nMensaje de error: ${error}\n\n<br>Projecto: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}";
+        
               }
                
                
