@@ -47,16 +47,11 @@ pipeline {
           post {
            always {
              echo  "I will always say Hello again!"
-             echo "${currentBuild.currentResult}" 
-             echo "${env.JOB_NAME}"  
-             echo "${env.BUILD_NUMBER}"
-             echo "${env.BUILD_URL}"  
-             echo "${currentBuild.currentResult}"  
-             echo "${env.JOB_NAME}"  
+             
                
-       //emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
-       //step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'sanjeevikumaran52@gmail.com', sendToIndividuals: true]),
-       //subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
+       body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
+       step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'sanjeevikumaran52@gmail.com', sendToIndividuals: true]),
+       subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
                  }
               }
                
