@@ -64,7 +64,9 @@ pipeline {
             steps {
                 echo "ok"
                   } 
-              }  
+              } 
+           }    
+               
           post {
            always {
              echo 'I will always say Hello again!'
@@ -78,5 +80,4 @@ pipeline {
                
                
               
-          }  
         }
