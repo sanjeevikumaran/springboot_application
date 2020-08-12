@@ -27,19 +27,23 @@ def notifyBuild(String buildStatus = 'STARTED') {
   buildStatus = buildStatus ?: 'SUCCESS'
 
   // Default values
-  def colorName = 'RED'
-  def colorCode = '#FF0000'
-  def subject = "${buildStatus}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'"
-  def summary = "${subject} (${env.BUILD_URL})"
-  def email = 'sanjeevikumaran52@gmail.com'
-  def details = """<p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
-    <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>"""
+  //def colorName = 'RED'
+  //def colorCode = '#FF0000'
+  //def subject = "${buildStatus}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'"
+  //def summary = "${subject} (${env.BUILD_URL})"
+  //def email = 'sanjeevikumaran52@gmail.com'
+  //def details = """<p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+    //<p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>"""
 
 
 
   emailext (
-      subject: subject,
-      body: details,
-      to: email
+      //subject: subject,
+      //body: details,
+      //to: email
+      mail to: 'sanjeevikumaran52@gmail.com',
+      subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}",  
+         body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}";
+
            )
 }
