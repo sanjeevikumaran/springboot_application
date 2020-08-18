@@ -1,9 +1,13 @@
----
-- hosts: all
-  vars:
-    springboot_application_name: spring-boot-sample
-    springboot_src: file-demo-0.0.1-SNAPSHOT.jar
-    springboot_propertyfile_template: /path/to/your/template/application.yml
-    springboot_configuration_template: /path/to/your/template/spring-boot-sample.conf
-  roles:
-    - role: ansible-springboot
+- hosts:
+    - localhost
+  tasks:
+    - name: Sending an e-mail using Gmail SMTP servers
+      mail:
+        host: smtp.gmail.com
+        port: 587
+        username: sanjeevikumaran514@gmail.com
+        password: fkinqiukunbknzze
+        to: Sanjeevi <sanjeevikumaran52@gmail.com>
+        subject: Ansible Report
+        body: Server1 has been successfully provisioned.
+ 
