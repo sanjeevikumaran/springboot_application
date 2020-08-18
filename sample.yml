@@ -1,0 +1,9 @@
+---
+- hosts: all
+  vars:
+    springboot_application_name: spring-boot-sample
+    springboot_src: file-demo-0.0.1-SNAPSHOT.jar
+    springboot_propertyfile_template: /path/to/your/template/application.yml
+    springboot_configuration_template: /path/to/your/template/spring-boot-sample.conf
+  roles:
+    - role: ansible-springboot
