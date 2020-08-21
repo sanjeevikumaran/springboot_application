@@ -6,7 +6,6 @@ pipeline{
                steps{
                  
                  mvn clean install
-                 echo "message"
             
                     }
                 }
