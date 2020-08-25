@@ -7,7 +7,7 @@ pipeline {
               {
             steps {
                isBuildSuccess = Build()
-               echo "$(isBuildSuccess)"
+                echo "${isBuildSuccess}"
                   }
               }
         stage('Email')
