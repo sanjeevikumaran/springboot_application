@@ -6,10 +6,10 @@ pipeline {
         stage('Build') 
               {
             steps {
-                    
+                script {
                isBuildSuccess = Build()
                 /*echo "${isBuildSuccess}" */
- 
+                       }
                   }
               }
         stage('Email')
