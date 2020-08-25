@@ -1,36 +1,30 @@
-pipeline {
-    
-    agent any
-    stages 
-           {
-                 
-           stage('Build')
-               {
-              node {
-                    try {
-                      notifyBuild('STARTED')
+stage 'Build'
 
-                      /* ... existing build steps ... */
-                      sh "mvn clean install"
-                       
-                        } catch (e) 
-                            {
-                        
-                       // If there was an exception thrown, the build failed
-                          currentBuild.result = "FAILED"
-                          throw e
-                            } finally {
-    
-                      // Success or failure, always send notifications
-                         notifyBuild(currentBuild.result)
-                                      }
-                   }
+node {
+  try {
+    notifyBuild('STARTED')
 
-            
-               def notifyBuild(String buildStatus = 'STARTED') 
-             {
-               // build status of null means successful
-               buildStatus = buildStatus ?: 'SUCCESS'
+    /* ... existing build steps ... */
+     
+     sh'mvn clean'
+     sh 'mvn install'
+
+
+
+
+  } catch (e) {
+    // If there was an exception thrown, the build failed
+    currentBuild.result = "FAILED"
+    throw e
+  } finally {
+    // Success or failure, always send notifications
+    notifyBuild(currentBuild.result)
+  }
+}
+
+def notifyBuild(String buildStatus = 'STARTED') {
+  // build status of null means successful
+  buildStatus = buildStatus ?: 'SUCCESS'
 
   // Default values
   def colorName = 'RED'
@@ -40,13 +34,11 @@ pipeline {
   def details = """<p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
     <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>"""
 
+ 
+
   emailext (
       subject: subject,
       body: details,
-      to: 'sanjeevikumaran52@gmail.com','sanjeevik470@gmail.com'
+      to: 'sanjeevikumaran514@gmail.com', 'sanjeevik470@gmail.com'
            )
-             
-              }
-         }
-    }
- }
+}
