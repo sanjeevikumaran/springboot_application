@@ -33,7 +33,7 @@ void email()
            if(isBuildSuccess)
               {
               
-  # email configuration for build failure
+ 
   def subject = "${buildStatus}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'"
   def summary = "${subject} (${env.BUILD_URL})"
   def details = """<p>Successfully finished: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
@@ -51,7 +51,7 @@ void email()
           else
               {
                
-  # email configuration for build success
+  
   def subject = "${buildStatus}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'"
   def summary = "${subject} (${env.BUILD_URL})"
   def details = """<p>Build failure happened: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
