@@ -6,8 +6,10 @@ pipeline {
         stage('Build') 
               {
             steps {
+                step{
                isBuildSuccess = Build()
                 echo "${isBuildSuccess}"
+                    }
                   }
               }
         stage('Email')
