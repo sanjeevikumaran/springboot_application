@@ -1,44 +1,69 @@
-stage 'Build'
+def isBuildSuccess = false
+pipeline {
+    agent any
+    stages {
+        
+        stage('Build') 
+              {
+            steps {
+               isBuildSuccess = Build()
+               echo "$(isBuildSuccess)"
+                  }
+              }
+        stage('Email')
+              {        
+            steps {
+                 email()
+                  }
+              }
 
-node {
-  try {
-    notifyBuild('STARTED')
+           } 
+         }
 
-    /* ... existing build steps ... */
-     
-     sh'mvn clean'
-     sh 'mvn install'
+boolean Build() 
+           {
+    
+            mvn clean install
+            
+           }
 
+void email()
+           {
 
-
-
-  } catch (e) {
-    // If there was an exception thrown, the build failed
-    currentBuild.result = "FAILED"
-    throw e
-  } finally {
-    // Success or failure, always send notifications
-    notifyBuild(currentBuild.result)
-  }
-}
-
-def notifyBuild(String buildStatus = 'STARTED') {
-  // build status of null means successful
-  buildStatus = buildStatus ?: 'SUCCESS'
-
-  // Default values
-  def colorName = 'RED'
-  def colorCode = '#FF0000'
+           if(isBuildSuccess))
+              {
+              
+  # email configuration for build failure
   def subject = "${buildStatus}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'"
   def summary = "${subject} (${env.BUILD_URL})"
-  def details = """<p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+  def details = """<p>Successfully finished: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
     <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>"""
-
- 
 
   emailext (
       subject: subject,
       body: details,
-      to: 'sanjeevikumaran514@gmail.com', 'sanjeevik470@gmail.com'
+      to: 'sanjeevikumaran514@gmail.com','sanjeevik470@gmail.com'
            )
-}
+                              
+
+              }
+          
+          else
+              {
+               
+  # email configuration for build success
+  def subject = "${buildStatus}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'"
+  def summary = "${subject} (${env.BUILD_URL})"
+  def details = """<p>Build failure happened: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+    <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>"""
+
+  emailext (
+      subject: subject,
+      body: details,
+      to: 'sanjeevikumaran514@gmail.com','sanjeevik470@gmail.com'
+           )
+   
+             }        
+
+
+           }
