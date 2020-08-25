@@ -30,7 +30,7 @@ boolean Build()
 void email()
            {
 
-           if(isBuildSuccess))
+           if(isBuildSuccess)
               {
               
   # email configuration for build failure
