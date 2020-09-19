@@ -40,9 +40,10 @@
 		  <artifactId>MessagingService</artifactId>
                   <version>0.0.1-SNAPSHOT</version>
                    <scope>system</scope>
-          <systemPath>${project.basedir}/lib/MessagingService-0.0.1-SNAPSHOT-jar-with-dependencies.jar</systemPath>
+          <!--<systemPath>${project.basedir}/lib/MessagingService-0.0.1-SNAPSHOT-jar-with-dependencies.jar</systemPath>-->
 	      <!--<systemPath>/home/sanjeevi/codebase/Messagingjar/MessagingService-0.0.1-SNAPSHOT-jar-with-dependencies.jar</systemPath> -->
-
+            <systemPath>${basedir}/src/lib/MessagingService-0.0.1-SNAPSHOT-jar-with-dependencies.jar</systemPath>
+			  
   </dependency>
 	</dependencies>
 
