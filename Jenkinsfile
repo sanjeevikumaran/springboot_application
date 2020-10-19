@@ -19,7 +19,7 @@ pipeline {
         always { 
             echo 'I will always say Hello!'
         }
-        sucess {
+        success {
             mail to: 'sanjeevi@wisdomtoolz.com',
             subject: "Successful Pipeline: ${currentBuild.fullDisplayName}",
             body: "Here is the link ${env.BUILD_URL}"
