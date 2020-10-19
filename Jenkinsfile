@@ -8,11 +8,11 @@ pipeline{
 		     }//End of steps	     
 post {			     
 	always {		     
-		 	     
-	        echo "Build status"
-		
-	        }    
-              }//End of stage Build
+	    echo "Build status"
+	         }    
+     }//End of post	
+              
+	      }//End of stage Build
    
 	       stage('Email') {       
 		 steps { 
