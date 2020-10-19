@@ -8,12 +8,7 @@ pipeline{
                      }
               }//End of stage Build
                 
-              
-	     
-	      stage('Email') {
-		 steps {
- 
-post {
+ post {
         
       success {
             echo 'Build success'
@@ -25,7 +20,6 @@ mail bcc: '', body: "<b>Build failed</b><br><br>Project: ${env.JOB_NAME} <br>Bui
               }
      }
 		 
-		 }//End of steps    
-	       }//End of stage email
+		 
              }//End of stages
           }//End of pipeline
