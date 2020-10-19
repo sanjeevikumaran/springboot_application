@@ -5,7 +5,13 @@ pipeline{
                 steps 
                      {
                   sh 'mvn clean install'
-                     }
+		     }//End of steps	     
+post {			     
+	always {		     
+		 	     
+	        echo "Build status"
+		
+	        }    
               }//End of stage Build
    
 	       stage('Email') {       
